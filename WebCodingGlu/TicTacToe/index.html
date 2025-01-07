@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Workshop yay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">Welcome to the Fun Page!</div>
+    <div id="content">
+        Fun content 💫
+        <button id="openModal">Play Tic Tac Toe</button>
+    </div>
+    <div id="footer">Footer Magic! 🎉</div>
+
+    <!-- Modal for the game -->
+    <div id="modal">
+        <div id="modalContent">
+            <h2>Tic Tac Toe Game</h2>
+            <div id="gameBoard">
+                <div class="row">
+                    <div class="cell" data-cell="0"></div>
+                    <div class="cell" data-cell="1"></div>
+                    <div class="cell" data-cell="2"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" data-cell="3"></div>
+                    <div class="cell" data-cell="4"></div>
+                    <div class="cell" data-cell="5"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" data-cell="6"></div>
+                    <div class="cell" data-cell="7"></div>
+                    <div class="cell" data-cell="8"></div>
+                </div>
+            </div>
+            <p id="gameStatus">Player X's turn</p>
+            <p id="scoreBord">Player X: 0 - Player O: 0</p>
+            <button id="closeModal">Close</button>
+            <button id="resetModal">Reset</button>
+        </div>
+    </div>
+
+    <script src="testing.js"></script>
+</body>
+
+</html>
