@@ -39,11 +39,11 @@ body {
   border: 4px solid black;
   border-radius: 50%;
   background-color: white;
+  transform: rotate(-90deg);
 }
 
 .hour-hand,
-.minute-hand,
-.second-hand {
+.minute-hand {
   position: absolute;
   width: 50%;
   height: 2px;
@@ -51,23 +51,42 @@ body {
   top: 50%;
   left: 50%;
   transform-origin: 0% 50%;
-  transform: rotate(0deg);
 }
 
-.hour-hand {
+.hour-hand,
+.minute-hand
+ {
+  background: rgb(0, 0, 0);
+  border-radius: 0 0 1.5vmin 1.5vmin;
   height: 4px;
   width: 40%;
 }
 
 .second-hand {
   background-color: red;
+  position: relative;
+  width: 20%;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0% 30%;
+}
+
+.line{
+  background-color: red;
+  position: absolute;
+  width: 20%;
+  height: 2px;
+  top: 150%;
+  left: 100%;
+  transform-origin: 0% 30%;
+
+  
 }
 
 .center-dot {
-  position: absolute;
   width: 10px;
   height: 10px;
-  background-color: black;
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -165,13 +184,46 @@ span{
   text-align: center;
 }
 
-.platform-number {
-  font-size: 48px;
-  margin: 0;
+.platform-square{
+  width:96px;
+  height:96px;
+  background-color: white;
+  position:absolute;
+  margin-bottom:180px;
 }
 
-.platform-text {
-  font-size: 24px;
-  font-weight: normal;
-  margin-top: -10px;
+.spoor-text{
+  width:20px;
+  height:20px;
+  position:absolute;
+  margin-bottom:250px;
+  margin-right: 35px;
+  color: #003da0;
 }
+
+
+.platform-number {
+  font-size: 54px;
+  margin: 0;
+  position: absolute;
+  color:#003da0;
+  margin-bottom:160px;
+  margin-right:5px;
+}
+
+.platform-text{
+  position: absolute;
+  color:#003da0;
+  margin-bottom:200px;
+  margin-left: 55px;
+}
+
+.platform-cut-out{
+  width:20px;
+  height:20px;
+  position:absolute;
+  margin-bottom:260px;
+  margin-right: 80px;
+  background-color: #003da0;
+}
+
