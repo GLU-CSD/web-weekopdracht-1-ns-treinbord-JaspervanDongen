@@ -42,15 +42,25 @@ body {
   transform: rotate(-90deg);
 }
 
-.hour-hand,
-.minute-hand {
+.hour-hand {
   position: absolute;
-  width: 50%;
+  width: 25%;
   height: 2px;
   background-color: black;
   top: 50%;
   left: 50%;
   transform-origin: 0% 50%;
+}
+
+.minute-hand{
+  position: absolute;
+  width: 40%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0% 50%;
+
 }
 
 .hour-hand,
@@ -59,30 +69,18 @@ body {
   background: rgb(0, 0, 0);
   border-radius: 0 0 1.5vmin 1.5vmin;
   height: 4px;
-  width: 40%;
 }
 
 .second-hand {
   background-color: red;
   position: relative;
-  width: 20%;
+  width: 35%;
   height: 2px;
   top: 50%;
   left: 50%;
   transform-origin: 0% 30%;
 }
 
-.line{
-  background-color: red;
-  position: absolute;
-  width: 20%;
-  height: 2px;
-  top: 150%;
-  left: 100%;
-  transform-origin: 0% 30%;
-
-  
-}
 
 .center-dot {
   width: 10px;
@@ -208,14 +206,14 @@ span{
   position: absolute;
   color:#003da0;
   margin-bottom:160px;
-  margin-right:5px;
+  margin-right:10px;
 }
 
 .platform-text{
   position: absolute;
   color:#003da0;
   margin-bottom:200px;
-  margin-left: 55px;
+  margin-left: 65px;
 }
 
 .platform-cut-out{
@@ -227,3 +225,29 @@ span{
   background-color: #003da0;
 }
 
+.station-input {
+  margin: 20px;
+  text-align: center;
+}
+
+#stationName {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#fetchButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color:#003da0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#fetchButton:hover {
+  background-color: #005bb5;
+}
