@@ -1,5 +1,15 @@
 let dTime;
-const API_KEY = "ffddedb47f8640c5a374ebf9228eab5d"; // Replace with your NS API key
+
+const trainTypes = {
+  SPR: 'Sprinter',
+  IC: 'Intercity',
+  ST: 'Stoptrein',
+  ICE: 'InterCity Express',
+  EST: 'Eurostar',
+  ICD:'InterCityDirect'
+};
+
+const API_KEY = ""; // Replace with your NS API key
 
 // DOM Elements
 const departureTimeElement = document.querySelector(".departure-time");
@@ -37,17 +47,21 @@ async function fetchTrainInfo(station) {
 
 // Function to update the information board
 function updateInfoBoard(departures) {
+console.log('yay');
   if (departures.length > 0) {
     // Update the board with the first departure
     const currentDeparture = departures[0];
     dTime = `${currentDeparture.plannedDateTime.substring(11, 16)}`;
     destinationElement.textContent = currentDeparture.direction;
-    trainTypeElement.textContent = currentDeparture.trainCategory;
+    Ttype = currentDeparture.trainCategory;
     viaInfoElement.textContent = currentDeparture.routeStations.map(station => station.mediumName).join(", ");
     platformNumberElement.textContent = currentDeparture.plannedTrack || "-";
     platformTextElement.textContent = ""; // Update with additional info if needed
 
-    console.log(dTime);
+   
+  
+  // Use the mapping object to set the text content
+  trainTypeElement.textContent = trainTypes[Ttype] || 'Unknown';
 
     // Update the next info line
     if (departures.length > 1) {
@@ -115,15 +129,44 @@ function updateClock() {
     showDepartureTime = !showDepartureTime; // Toggle the visibility of departure time
   }
 
+  // Calculate time difference between now and dTime
+  const [dHours, dMinutes] = dTime.split(":").map(Number); // Extract hours and minutes from dTime
+  const departureTime = new Date(now);
+  departureTime.setHours(dHours, dMinutes, 0, 0); // Set departure time
+
+  let diff = departureTime - now; // Calculate difference in milliseconds
+
+  
+
+  // Convert difference into hours, minutes, and seconds
+  const diffHours = Math.floor(diff / (1000 * 60 * 60));
+  const diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const diffSeconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+
   // Show or hide the departure time based on the toggle state
   if (showDepartureTime) {
-    departureTimeElement.textContent = dTime;
+    departureTimeElement.textContent = dTime
     departureTimeElement.style.display = 'block'; // Make visible
   } else {
-    departureTimeElement.style.display = 'none'; // Hide
+    const timeUntilDeparture = `${diffHours}h ${diffMinutes}m ${diffSeconds}s`;
+    console.log(timeUntilDeparture);
+    console.log(diffMinutes)
+    
+    if (diffMinutes > 1) {
+      departureTimeElement.textContent = `${diffMinutes} minut${diffMinutes > 1 ? 'en' : ''}`;
+    } else if (diffMinutes === 1) {
+      departureTimeElement.textContent = `${diffMinutes} minuut`;
+    } else {
+      departureTimeElement.textContent = `<1 minuut`;
+
+    departureTimeElement.style.display = 'block'; // Hide
   }
 }
+}
+
 
 // Update the clock every second
 setInterval(updateClock, 1000);
+fetchTrainInfo(station);
 updateClock();

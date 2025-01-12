@@ -141,12 +141,12 @@ body {
 
 .destination {
   font-size: 30px;
-  margin: -30px 0;
+  margin: -20px 0;
 }
 
 .via-info {
   font-size: 20px;
-  margin: 40px 0;
+  margin: 30px 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 450px;
